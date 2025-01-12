@@ -30,7 +30,7 @@ exchange2 = SimExchange(name="Exchange1", bid=100.5, ask=101.5, bid_vol=1000, as
 
 
 # Simulating the update process
-for _ in range(5):  # Simulating 5 updates
+for _ in range(10000):  # Simulating 5 updates
     exchange1.update_prices()
     exchange2.update_prices()
     
