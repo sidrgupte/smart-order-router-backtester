@@ -6,4 +6,4 @@ This project implements a backtesting framework for a **Smart Order Router (SOR)
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/smart-order-router.git
+   git clone https://github.com/sidrgupte/smart-order-router-backtester.git
