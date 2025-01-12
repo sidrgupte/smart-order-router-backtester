@@ -1,6 +1,6 @@
 import random
 
-class SimExchange:
+class Exchange:
     def __init__(self, name, bid, ask, bid_vol, ask_vol, transaction_cost):
         self.name = name
         self.bid = bid
@@ -19,24 +19,13 @@ class SimExchange:
 
         self.timestamp += 1
 
+        # print(f"DEBUG: {self.name} Timestamp Updated: {self.timestamp}")
+
     def display_data(self):
-        print(f"{self.name} - Bid Price: {self.bid:.2f}, Ask Price: {self.ask:.2f}, "
-              f"Bid Volume: {self.bid_vol}, Ask Volume: {self.ask_vol}, "
-              f"Transaction Cost: {self.transaction_cost:.4f}, Timestamp: {self.timestamp}")
+        print(f"{self.name} - Bid: {self.bid:.2f}, Ask: {self.ask:.2f}, Bid Vol: {self.bid_vol}, Ask Vol: {self.ask_vol}, Timestamp: {self.timestamp}")
         
 
-exchange1 = SimExchange(name="Exchange1", bid=100, ask=101, bid_vol=1000, ask_vol=1000, transaction_cost=0.001)
-exchange2 = SimExchange(name="Exchange1", bid=100.5, ask=101.5, bid_vol=1000, ask_vol=1000, transaction_cost=0.001)
 
-
-# Simulating the update process
-for _ in range(10000):  # Simulating 5 updates
-    exchange1.update_prices()
-    exchange2.update_prices()
-    
-    # Display the updated data
-    exchange1.display_data()
-    exchange2.display_data()
 
 
         
