@@ -1,13 +1,16 @@
 from exchange import Exchange
 import time
 import csv
-import os
+from pathlib import Path
 
-if not os.path.exists('data'):
-    os.makedirs('data')
+project_root = Path.cwd().parent
+data_dir = project_root / 'data'
+
+if not data_dir.exists():
+    data_dir.mkdir(parents=True, exist_ok=True)
 
 def save_to_csv(exchange_data):
-    with open('data/market_data.csv', 'a', newline='') as f:
+    with open(data_dir / 'market_data.csv', 'a', newline='') as f:
         writer = csv.writer(f)
         writer.writerow([exchange_data['name'], exchange_data['bid'], exchange_data['ask'],
                          exchange_data['bid_vol'], exchange_data['ask_vol'], exchange_data['timestamp']])
@@ -20,7 +23,7 @@ def run_simulation(freq=1, run_time_seconds=10):
 
     exchanges = [exchange1, exchange2, exchange3, exchange4]
 
-    with open('data/market_data.csv', 'w', newline='') as f:
+    with open(data_dir / 'market_data.csv', 'w', newline='') as f:
         writer = csv.writer(f)
         writer.writerow(['exchange', 'bid', 'ask', 'bid_vol', 'ask_vol', 'timestamp'])
 
@@ -28,8 +31,8 @@ def run_simulation(freq=1, run_time_seconds=10):
 
     while time.time() - start_time < run_time_seconds:
         for exchange in exchanges:
-            exchange.update_prices()  # Update prices and volumes
-            exchange.display_data()  # Display the updated data
+            exchange.update_prices()  
+            exchange.display_data() 
 
             save_to_csv({
                 'name': exchange.name,
